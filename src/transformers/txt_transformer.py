@@ -8,7 +8,7 @@
 # Descripción:
 #
 #   Este archivo define un procesador de datos que se encarga de transformar
-#   y formatear el contenido de un archivo CSV
+#   y formatear el contenido de un archivo TXT
 #-------------------------------------------------------------------------
 from src.extractors.txt_extractor import TXTExtractor
 from os.path import join
@@ -29,7 +29,7 @@ class TXTTransformer(luigi.Task):
                     parts = line.strip().split(',')
                     result.append({
                         'description': parts[2],
-                        'quantity': int(parts[1]),
+                        'quantity': int(parts[3]),
                         'price': float(parts[5]),
                         'total': float(float(parts[3])) * float(parts[5]),
                         'invoice': int(parts[0]),
