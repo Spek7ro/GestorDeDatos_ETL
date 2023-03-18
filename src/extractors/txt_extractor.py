@@ -23,8 +23,8 @@ class TXTExtractor(luigi.Task):
         project_dir = os.path.dirname(os.path.abspath("loader.py"))
         assets_dir = join(project_dir, "assets")
         files = [f for f in os.listdir(assets_dir) if isfile(join(assets_dir, f))]
-        csv_files = [f for f in files if f.endswith(".txt")]
+        txt_files = [f for f in files if f.endswith(".txt")]
         targets = []
-        for file in csv_files:
+        for file in txt_files:
             targets.append(luigi.LocalTarget(join(assets_dir, file)))
         return targets
