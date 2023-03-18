@@ -14,7 +14,7 @@ from src.extractors.txt_extractor import TXTExtractor
 from os.path import join
 import luigi, os, json
 
-class TXTTransformer(luigi.Task):
+class (luigi.Task):
 
     def requires(self):
         return TXTExtractor()
