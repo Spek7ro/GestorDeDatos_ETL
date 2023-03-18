@@ -23,20 +23,40 @@ class TXTTransformer(luigi.Task):
         result = []
         for file in self.input():
             with file.open() as txt_file:
-                # Leer el archivo de texto y transformar los datos
-                header = txt_file.readline().strip().split(',')
-                for line in txt_file:
-                    parts = line.strip().split(',')
-                    result.append({
-                        'description': parts[2],
-                        'quantity': int(parts[1]),
-                        'price': float(parts[5]),
-                        'total': float(float(parts[3])) * float(parts[5]),
-                        'invoice': int(parts[0]),
-                        'provider': int(parts[6]),
-                        'country': parts[7].strip()
-                    })
-           
+                txt_file.readline() # omitir la primera linea (cabecera)
+                for linea in txt_file: # se lee la segunda linea que contiene los registros
+                    linea = linea.strip()
+                    registros = linea.split(';') # los registros estan separados por un ;
+                    for registro in registros:
+                        if registro:
+                            # print("Registro:", registro)
+                            parts = registro.split(',')
+                            description = parts[2]
+                            quantity = int(parts[3])
+                            price = float(parts[5])
+                            total = quantity * price
+                            invoice = parts[1]
+                            provider = parts[6]
+                            country = parts[7]
+                            
+                            # print("description:", description)
+                            # print("quantity:", quantity)
+                            # print("price:", price)
+                            # print("total:", total)
+                            # print("invoice:", invoice)
+                            # print("provider:", provider)
+                            # print("country:", country)
+                            # print('----------')
+
+                            result.append({
+                                'description': description,
+                                'quantity': quantity,
+                                'price': price,
+                                'total': total,
+                                'invoice': invoice,
+                                'provider': provider,
+                                'country': country
+                            }) 
         with self.output().open('w') as out:
             out.write(json.dumps(result, indent=4))
 
