@@ -13,6 +13,7 @@ Componente responsable de ejecutar el proceso de *extracción*, *transformación
     │        ├── csv_extractor.py       # extractor de datos de archivos CSV
     │        ├── htm_extractor.py       # extractor de datos de archivos HTM
     │        ├── xml_extractor.py       # extractor de datos de archivos XML
+    |        ├── txt_extractor.py       # extractor de datos de archivos TXT
     │  ├── helpers                      # archivos auxiliares
     │        ├── provider.py            # definición de la interacción con la base de datos
     │        ├── processor.py           # definición de procesamiento de respuestas 
@@ -23,6 +24,7 @@ Componente responsable de ejecutar el proceso de *extracción*, *transformación
     │        ├── csv_transformer.py     # transformador de datos de archivos CSV
     │        ├── htm_transformer.py     # transformador de datos de archivos HTM
     │        ├── xml_transformer.py     # transformador de datos de archivos XML
+    │        ├── txt_transformer.py     # transformador de datos de archivos TXT
     ├── .gitignore                      # exclusiones de git
     ├── README.md                       # este archivo
     ├── requirements.txt                # dependencias del sistema
